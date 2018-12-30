@@ -7,7 +7,6 @@
   "author": "Bronson Quick",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "commander": "^2.19.0",
     "inquirer": "^6.2.1",
     "read-yaml": "^1.1.0",
     "write-yaml": "^1.0.0"
