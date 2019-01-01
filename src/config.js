@@ -7,6 +7,7 @@ const inquirer = require('inquirer');
 const prompt = require('./prompt');
 const promptValidation = require('./prompt-validation');
 const configPath = path.join( os.homedir(), '.monocoque' );
+let config = null;
 
 const maybeCreateConfig = async function() {
     // Try and create the directory for our config file.
@@ -59,13 +60,9 @@ function getDefaults() {
     }
 }
 
-async function getConfig() {
-    fs.readJson( configPath + '/config.json' )
-        .then(config => {
-            return config;
-        })
-        .catch(err => {
-        });
-}
+const getConfig = async function() {
+    let readConfig = await fs.readJson( configPath + '/config.json' );
+    return readConfig;
+};
 
 module.exports = { maybeCreateConfig, getConfig };

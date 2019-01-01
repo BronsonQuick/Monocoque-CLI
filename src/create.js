@@ -8,7 +8,7 @@ colors.setTheme( require( __dirname + '/themes/logging.js' ) );
 const rootPath = path.dirname( require.main.filename );
 
 module.exports = function create(answers, config) {
-    let monocoqueBase = monocoqueYaml.sync(rootPath + '/src/monocoque-base.yml');
+    let monocoqueBase = monocoqueYaml.sync(rootPath + '/src/monocoque-cli.yml');
     let php = {
         'depends_on': ['db'],
         'image': 'monocoque/monocoque:' + answers.phpVersion,
