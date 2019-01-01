@@ -1,4 +1,4 @@
-# @monocoque/monocoque - Monocoque CLI.
+# Monocoque CLI
 
 A command line application to generate `docker-compose.yml` files using [Monocoque](https://hub.docker.com/r/monocoque/monocoque) Docker images for your local WordPress development environments.
 
