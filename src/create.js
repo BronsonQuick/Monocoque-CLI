@@ -3,6 +3,8 @@
 const monocoqueYaml = require('read-yaml');
 const projectYaml = require('write-yaml');
 const path = require('path');
+const colors = require('colors');
+colors.setTheme( require( __dirname + '/themes/logging.js' ) );
 const rootPath = path.dirname( require.main.filename );
 
 module.exports = function create(answers, config) {
@@ -28,4 +30,6 @@ module.exports = function create(answers, config) {
 
     // Write the yaml file.
     projectYaml.sync(config.projectsPath + '/' + projectName + '/docker-compose.yml', monocoqueBase);
+
+    console.log( colors.success( 'docker-compose.yml has been created in: ' + config.projectsPath + '/' + projectName ) );
 };
