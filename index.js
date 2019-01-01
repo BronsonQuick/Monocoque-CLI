@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-const prompt = require('./src/prompt');
+const config = require('./src/config');
 
-const init = function() {
-    prompt();
+const init = async function() {
+    await config.maybeCreateConfig();
 };
 
 // Initialise the program.

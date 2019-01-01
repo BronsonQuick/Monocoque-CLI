@@ -1,10 +1,12 @@
 'use strict';
 
-let monocoqueYaml = require('read-yaml');
-let projectYaml = require('write-yaml');
+const monocoqueYaml = require('read-yaml');
+const projectYaml = require('write-yaml');
+const path = require('path');
+const rootPath = path.dirname( require.main.filename );
 
-module.exports = function create(answers) {
-    let monocoqueBase = monocoqueYaml.sync('./src/monocoque-base.yml');
+module.exports = function create(answers, config) {
+    let monocoqueBase = monocoqueYaml.sync(rootPath + '/src/monocoque-base.yml');
     let php = {
         'depends_on': ['db'],
         'image': 'monocoque/monocoque:' + answers.phpVersion,
@@ -19,7 +21,11 @@ module.exports = function create(answers) {
         'env_file': ['config.env']
     };
 
+    // Append the PHP details to our base yaml file.
     monocoqueBase.services.php = php;
 
-    projectYaml.sync('docker-compose.yml', monocoqueBase);
+    const projectName = path.normalize( answers.projectName );
+
+    // Write the yaml file.
+    projectYaml.sync(config.projectsPath + '/' + projectName + '/docker-compose.yml', monocoqueBase);
 };

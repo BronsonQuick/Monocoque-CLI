@@ -1,10 +1,17 @@
 'use strict';
-var inquirer = require('inquirer');
-var create   = require('./create');
+const inquirer = require('inquirer');
+const create   = require('./create');
+const promptValidation = require('./prompt-validation');
 
-module.exports = function prompt() {
+module.exports = function prompt( config ) {
 
     const questions = [
+        {
+            type: 'input',
+            name: 'projectName',
+            message: 'What would you like to call the project?',
+            validate: promptValidation.validateProjectNotEmpty
+        },
         {
             type: 'list',
             name: 'phpVersion',
@@ -39,6 +46,6 @@ module.exports = function prompt() {
     ];
 
     inquirer.prompt(questions).then(answers => {
-        create(answers);
+        create(answers, config);
     });
 };

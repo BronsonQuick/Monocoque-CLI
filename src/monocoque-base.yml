@@ -32,6 +32,6 @@ services:
         networks:
             - monocoque
 volumes:
-    db-data:
+    db-data: {}
 networks:
-    chassis:
+    chassis: {}
