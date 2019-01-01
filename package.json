@@ -1,6 +1,6 @@
 {
   "name": "@monocoque/monocoque",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Monocoque is a lightweight Docker local development environment for WordPress.",
   "main": "index.js",
   "repository": "https://github.com/BronsonQuick/Monocoque-CLI",
@@ -17,5 +17,12 @@
   "bin": {
     "m": "./index.js",
     "monocoque": "./index.js"
-  }
+  },
+  "keywords": [
+    "wordpress",
+    "docker",
+    "monocoque",
+    "chassis",
+    "wp-cli"
+  ]
 }
