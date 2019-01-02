@@ -2,11 +2,13 @@
 'use strict';
 
 const config = require('./src/config');
+const prompt = require('./src/prompt');
 const wordpress = require('./src/wordpress');
 
 const init = async function() {
-    await config.maybeCreateConfig();
-    // wordpress.downloadWordPress();
+    let configSettings = await config.maybeCreateConfig();
+    await prompt( configSettings );
+    wordpress.downloadWordPress();
 };
 
 // Initialise the program.

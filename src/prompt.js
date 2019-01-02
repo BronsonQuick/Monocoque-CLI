@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const create   = require('./create');
 const promptValidation = require('./prompt-validation');
 
-module.exports = function prompt( config ) {
+module.exports = async function prompt( config ) {
 
     const questions = [
         {
@@ -45,7 +45,7 @@ module.exports = function prompt( config ) {
         },
     ];
 
-    inquirer.prompt(questions).then(answers => {
+    await inquirer.prompt(questions).then(answers => {
         create(answers, config);
     });
 };
