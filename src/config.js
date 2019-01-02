@@ -5,8 +5,10 @@ const path = require('path');
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
 const prompt = require('./prompt');
+const colors = require('colors');
 const promptValidation = require('./prompt-validation');
 const configPath = path.join( os.homedir(), '.monocoque' );
+colors.setTheme( require( __dirname + '/themes/logging.js' ) );
 let config = null;
 
 const maybeCreateConfig = async function() {
@@ -14,7 +16,7 @@ const maybeCreateConfig = async function() {
     try {
         fs.ensureDir( configPath );
     } catch (ex) {
-        console.error( "Error: We failed to create the `~./monocoque` directory!" );
+        console.log( colors.error( "Error: We failed to create the `~./monocoque` directory!" ) );
         process.exit(1);
     }
 
@@ -43,7 +45,7 @@ const maybeCreateConfig = async function() {
                     fs.writeJson( configPath + '/config.json', config );
                     return (config);
                 } catch (ex) {
-                    console.error( "Error: We failed to create the `~./monocoque/config.json` file!" );
+                    console.log( colors.error( "Error: We failed to create the `~./monocoque/config.json` file!" ) );
                     process.exit(1);
                 }
             })

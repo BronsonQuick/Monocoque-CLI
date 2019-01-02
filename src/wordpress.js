@@ -11,7 +11,7 @@ const downloadWordPress = function() {
     let configSettings = config.maybeCreateConfig();
     configSettings.then(config => {
         let cwd = configSettings.projectsPath + '/' + rootPath;
-        console.log( colors.yellow( 'Downloading WordPress...' ) );
+        console.log( colors.warning( 'Downloading WordPress...' ) );
     });
 };
 
