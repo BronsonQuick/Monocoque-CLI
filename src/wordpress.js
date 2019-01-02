@@ -10,8 +10,8 @@ colors.setTheme( require( __dirname + '/themes/logging.js' ) );
 const downloadWordPress = function() {
     let configSettings = config.maybeCreateConfig();
     configSettings.then(config => {
-        let cwd = configSettings.projectsPath + '/' + rootPath;
         console.log( colors.warning( 'Downloading WordPress...' ) );
+        let cwd = configSettings.projectsPath + '/' + rootPath;
     });
 };
 
