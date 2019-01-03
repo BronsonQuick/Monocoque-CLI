@@ -22,10 +22,6 @@ const init = async function() {
 
     let configSettings = await config.maybeCreateConfig();
     let projectPath = prompt( configSettings );
-    projectPath.then(
-        projectPath => {
-            up( projectPath );
-    });
     // wordpress.downloadWordPress();
 };
 
