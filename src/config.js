@@ -53,10 +53,19 @@ const maybeCreateConfig = async function() {
 
 };
 
+async function getConfig(){
+    try {
+        let config = await fs.readJson( configPath + '/config.json' );
+        return (config);
+    } catch ( err ) {
+        console.log( colors.error('Failed to load config.json') );
+    }
+}
+
 function getDefaults() {
     return {
         'projectsPath': path.join( os.homedir(), 'monocoque-sites' )
     }
 }
 
-module.exports = { maybeCreateConfig };
+module.exports = { maybeCreateConfig, getConfig };

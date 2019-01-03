@@ -8,10 +8,11 @@ const rootPath = path.dirname( require.main.filename );
 colors.setTheme( require( __dirname + '/themes/logging.js' ) );
 
 const downloadWordPress = function() {
-    let configSettings = config.maybeCreateConfig();
+    let configSettings = config.getConfig();
     configSettings.then(config => {
         console.log( colors.warning( 'Downloading WordPress...' ) );
         let cwd = configSettings.projectsPath + '/' + rootPath;
+        execSync( 'docker-compose exec php su -s /bin/bash www -c "wp core download --force"', { stdio: 'inherit', cwd: cwd });
     });
 };
 

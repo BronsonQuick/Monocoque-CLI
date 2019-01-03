@@ -6,6 +6,7 @@ const config = require('./src/config');
 const prompt = require('./src/prompt');
 const wordpress = require('./src/wordpress');
 const colors = require('colors');
+const up = require('./src/commands/up');
 colors.setTheme( require( './src/themes/logging.js' ) );
 
 const init = async function() {
@@ -20,8 +21,12 @@ const init = async function() {
     });
 
     let configSettings = await config.maybeCreateConfig();
-    await prompt( configSettings );
-    wordpress.downloadWordPress();
+    let projectPath = prompt( configSettings );
+    projectPath.then(
+        projectPath => {
+            up( projectPath );
+    });
+    // wordpress.downloadWordPress();
 };
 
 // Initialise the program.

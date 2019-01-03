@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const create   = require('./create');
 const promptValidation = require('./prompt-validation');
+let projectPath = '';
 
 module.exports = async function prompt( config ) {
 
@@ -46,6 +47,11 @@ module.exports = async function prompt( config ) {
     ];
 
     await inquirer.prompt(questions).then(answers => {
-        create(answers, config);
+        let path = create(answers, config);
+        path.then( path => {
+            projectPath = path;
+        });
     });
+
+    return projectPath;
 };
