@@ -20,10 +20,6 @@ module.exports = async function create(answers, config) {
     try {
         // Copy our config files into our new project.
         fs.copy( 'config', projectPath + '/config/' );
-        fs.copy( 'local-config.php', projectPath + '/local-config.php' );
-        fs.copy( 'local-config-db.php', projectPath + '/local-config-db.php' );
-        fs.copy( 'wp-config.php', projectPath + '/wp-config.php' );
-        fs.copy( 'phpinfo.php', projectPath + '/phpinfo.php' );
 
         console.log( colors.success( 'Your configuration files have been copied into: ' + projectPath ) );
 
