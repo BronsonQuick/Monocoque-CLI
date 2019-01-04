@@ -55,7 +55,9 @@ module.exports = async function create(answers, config) {
                 "./content:/var/www/html/wp-content",
                 "./content/themes:/var/www/html/wp-content/themes",
                 "./content/plugins:/var/www/html/wp-content/plugins",
-                "./content/mu-plugins:/var/www/html/wp-content/mu-plugins"
+                "./content/mu-plugins:/var/www/html/wp-content/mu-plugins",
+                "./config/nginx/nginx.conf:/etc/nginx/conf.d/default.conf",
+                "./config/nginx/nginx.conf:/etc/nginx/conf.d/site.nginx.conf",
             ],
             'networks': ['monocoque'],
             'env_file': ['config.env']
