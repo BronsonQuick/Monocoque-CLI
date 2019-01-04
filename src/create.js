@@ -19,7 +19,7 @@ module.exports = async function create(answers, config) {
 
     try {
         // Copy our config files into our new project.
-        fs.copy( 'config', projectPath + '/config/' );
+        fs.copySync( './config', projectPath + '/config' );
 
         console.log( colors.success( 'Your configuration files have been copied into: ' + projectPath ) );
 

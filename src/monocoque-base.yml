@@ -10,20 +10,6 @@ services:
             - monocoque
         env_file:
             - config.env
-    nginx:
-        image: nginx:latest
-        expose:
-            - "80"
-            - "443"
-        volumes:
-            - ${PWD}/config/nginx/nginx.conf:/etc/nginx/conf.d/
-            - ${PWD}/config/nginx/site.nginx.conf:/etc/nginx/conf.d/
-        networks:
-            - monocoque
-        env_file:
-            - config.env
-        depends_on:
-            - php
     mailhog:
         image: mailhog/mailhog
         ports:
