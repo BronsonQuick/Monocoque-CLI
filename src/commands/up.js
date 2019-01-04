@@ -4,7 +4,7 @@ const execSync = require('child_process').execSync;
 const colors = require('colors');
 colors.setTheme( require( '../themes/logging.js' ) );
 
-module.exports = async function up( projectPath ) {
+module.exports = function up( projectPath = process.cwd() ) {
     let cwd = projectPath;
     console.log( colors.warning( 'Starting docker containers...' ) );
     try {
