@@ -1,6 +1,6 @@
 'use strict';
 const inquirer = require('inquirer');
-const create   = require('./create');
+const create   = require('./commands/create');
 const promptValidation = require('./prompt-validation');
 let projectPath = '';
 

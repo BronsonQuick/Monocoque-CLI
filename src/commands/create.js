@@ -6,16 +6,25 @@ const path = require('path');
 const colors = require('colors');
 const envfile = require('envfile');
 const fs = require('fs-extra');
-const up = require('./commands/up');
-colors.setTheme( require( __dirname + '/themes/logging.js' ) );
+const figlet = require('figlet');
+const config = require('./../config');
+colors.setTheme( require( './../themes/logging.js' ) );
 const rootPath = path.dirname( require.main.filename );
-let projectPath = '';
 
 
-module.exports = async function create(answers, config) {
+module.exports = async function create() {
 
-    const projectName = path.normalize( answers.projectName );
-    projectPath = config.projectsPath + '/' + projectName;
+    let configSettings = await config.maybeCreateConfig();
+    let projectPath = prompt( configSettings );
+
+    // Generate an ascii logo.
+    await figlet('Monocoque', function(err, data) {
+        if (err) {
+            console.log(colors.error( 'Something went wrong with our logo' ));
+            return;
+        }
+        console.log(data);
+    });
 
     try {
         // Copy our config files into our new project.
@@ -69,8 +78,6 @@ module.exports = async function create(answers, config) {
         await projectYaml.sync(projectPath + '/docker-compose.yml', monocoqueBase);
 
         console.log( colors.success( 'docker-compose.yml has been created in: ' + projectPath ) );
-
-        await up();
 
     } catch ( err ) {
         console.log(err);
