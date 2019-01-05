@@ -17,7 +17,7 @@ yargs
     .command( 'restart', 'Restarts the containers.', require( './src/commands/restart' ) )
     .command( 'ssh', 'SSH into the container.', require( './src/commands/ssh' ) )
     .command( 'up', 'Starts the container.', require( './src/commands/up' ) )
-    .command( 'update', 'Updates all the Monocoque container images', require( './src/commands/update' ) )
+    .command( 'update', 'Updates all the Monocoque container images.', require( './src/commands/update' ) )
     .command( 'wp', 'Runs a WP-CLI command.', require( './src/commands/wp' ) )
     .demandCommand(1, warn)
     .help('h')
