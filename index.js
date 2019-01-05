@@ -10,6 +10,7 @@ yargs
     .command( [ 'create', 'init' ], 'Creates a new instance of Monocoque.', require( './src/commands/create' ) )
     .command( [ 'delete', 'destroy', 'remove' ], 'Deletes the containers.', require( './src/commands/delete' ) )
     .command( [ 'down', 'halt' ], 'Stops the containers.', require( './src/commands/down' ) )
+    .command( [ 'install' ], 'Install WordPress.', require( './src/commands/wordpress' ) )
     .command( [ 'restart', 'reload' ], 'Restarts the containers.', require( './src/commands/restart' ) )
     .command( 'ssh', 'SSH into the container.', require( './src/commands/ssh' ) )
     .command( 'up', 'Starts the container.', require( './src/commands/up' ) )

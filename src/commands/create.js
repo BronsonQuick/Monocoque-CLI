@@ -8,6 +8,8 @@ const envfile = require('envfile');
 const fs = require('fs-extra');
 const figlet = require('figlet');
 const config = require('./../config');
+const up = require('./up');
+const wordpress = require('./wordpress');
 colors.setTheme( require( './../themes/logging.js' ) );
 const rootPath = path.dirname( require.main.filename );
 
@@ -61,6 +63,7 @@ module.exports = async function create() {
             'image': 'monocoque/monocoque:' + answers.phpVersion,
             'ports': ["80:80"],
             'volumes': [
+                "./wordpress:/var/www/html",
                 "./content:/var/www/html/wp-content",
                 "./content/themes:/var/www/html/wp-content/themes",
                 "./content/plugins:/var/www/html/wp-content/plugins",
@@ -78,6 +81,9 @@ module.exports = async function create() {
         await projectYaml.sync(projectPath + '/docker-compose.yml', monocoqueBase);
 
         console.log( colors.success( 'docker-compose.yml has been created in: ' + projectPath ) );
+
+        up();
+        wordpress();
 
     } catch ( err ) {
         console.log(err);

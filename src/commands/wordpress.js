@@ -2,18 +2,17 @@
 
 const execSync = require('child_process').execSync;
 const colors = require('colors');
-const config = require('./config');
+const config = require('../config');
 const path = require('path');
 const rootPath = path.dirname( require.main.filename );
-colors.setTheme( require( __dirname + '/themes/logging.js' ) );
+colors.setTheme( require( './../themes/logging.js' ) );
 
-const downloadWordPress = function() {
-    let configSettings = config.getConfig();
-    configSettings.then(config => {
-        console.log( colors.warning( 'Downloading WordPress...' ) );
-        let cwd = configSettings.projectsPath + '/' + rootPath;
+module.exports = function wordpress() {
+    console.log( colors.warning( 'Downloading WordPress...' ) );
+    let cwd = process.cwd();
+    try {
         execSync( 'docker-compose exec php su -s /bin/bash www -c "wp core download --force"', { stdio: 'inherit', cwd: cwd });
-    });
+    } catch (ex) {
+        console.log( colors.error( 'Failed to download WordPress' ) );
+    }
 };
-
-module.exports = { downloadWordPress };
