@@ -70,7 +70,7 @@ module.exports = async function create(answers, config) {
 
         console.log( colors.success( 'docker-compose.yml has been created in: ' + projectPath ) );
 
-        await up( projectPath );
+        await up();
 
     } catch ( err ) {
         console.log(err);
