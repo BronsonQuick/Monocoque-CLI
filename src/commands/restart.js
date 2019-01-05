@@ -14,5 +14,3 @@ module.exports = function restart() {
         console.log( colors.error( 'Failed to restart Docker containers.' ) );
     }
 };
-
-// Run `docker-compose restart -d`
