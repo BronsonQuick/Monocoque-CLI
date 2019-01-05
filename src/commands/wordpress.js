@@ -2,9 +2,6 @@
 
 const execSync = require('child_process').execSync;
 const colors = require('colors');
-const config = require('../config');
-const path = require('path');
-const rootPath = path.dirname( require.main.filename );
 colors.setTheme( require( './../themes/logging.js' ) );
 
 module.exports = function wordpress() {
