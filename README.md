@@ -12,3 +12,8 @@ npm install -g @monocoque/monocoque
 monocoque
 ```
 
+## TODO
+
+- Prompt for WordPress installation details. e.g. 'Single Site, Multisite with subomains, Multisite with subfolders' and install with WP-CLI.
+- Add the ability to use custom domains using VIRTUAL_HOST environmental variables and Nginx Proxy.
+- Use [hostile](https://www.npmjs.com/package/hostile) to manage host entries. 
