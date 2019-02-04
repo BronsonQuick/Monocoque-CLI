@@ -4,7 +4,6 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
-const prompt = require('./prompt');
 const colors = require('colors');
 const promptValidation = require('./prompt-validation');
 const configPath = path.join( os.homedir(), '.monocoque' );
