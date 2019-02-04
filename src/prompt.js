@@ -1,10 +1,20 @@
 'use strict';
 const inquirer = require('inquirer');
-const create   = require('./commands/create');
+const createDockerCompose = require('./create-docker-compose');
+const figlet = require('figlet');
 const promptValidation = require('./prompt-validation');
 let projectPath = '';
 
-module.exports = async function prompt( config ) {
+module.exports = async function prompt( configSettings ) {
+
+    // Generate an ascii logo.
+    await figlet('Monocoque', function(err, data) {
+        if (err) {
+            console.log(colors.error( 'Something went wrong with our logo' ));
+            return;
+        }
+        console.log(data);
+    });
 
     const questions = [
         {
@@ -47,7 +57,7 @@ module.exports = async function prompt( config ) {
     ];
 
     await inquirer.prompt(questions).then(answers => {
-        let path = create(answers, config);
+        let path = createDockerCompose( answers, configSettings );
         path.then( path => {
             projectPath = path;
         });
