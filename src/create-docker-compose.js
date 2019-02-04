@@ -48,7 +48,7 @@ module.exports = async function createDockerCompose( answers, configSettings ){
                 "./content/themes:/var/www/html/wp-content/themes",
                 "./content/plugins:/var/www/html/wp-content/plugins",
                 "./content/mu-plugins:/var/www/html/wp-content/mu-plugins",
-                "./config/nginx/nginx.conf:/etc/nginx/conf.d/localhost.conf",
+                "./config/nginx/localhost.conf:/etc/nginx/conf.d/localhost.conf",
             ],
             'networks': ['monocoque'],
             'env_file': ['config.env']
@@ -61,14 +61,13 @@ module.exports = async function createDockerCompose( answers, configSettings ){
         await projectYaml.sync(projectPath + '/docker-compose.yml', monocoqueBase);
 
         console.log( colors.success( 'docker-compose.yml has been created in: ' + projectPath ) );
-
         // Copy our config files into our new project.
-        fs.copySync( './config', projectPath + '/config' );
+        fs.copySync( __dirname + '/../config', projectPath + '/config' );
 
         console.log( colors.success( 'Your configuration files have been copied into: ' + projectPath ) );
 
-        up();
-        wordpress();
+        await up();
+        await wordpress();
 
     } catch ( err ) {
         console.log(err);
