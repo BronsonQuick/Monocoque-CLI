@@ -31,7 +31,7 @@ module.exports = async function createDockerCompose( answers, configSettings ){
 
         let envConfig = envfile.stringifySync(envConfigVariables);
         const projectPath = configSettings.projectsPath + '/' + answers.projectName;
-        fs.writeFile( projectPath + '/config.env', envConfig, (err) => {
+        fs.writeFile( projectPath + '/config.env', envConfig, function (err) {
             if (err) throw err;
             console.log( colors.success( 'config.env has been created in: ' + projectPath ) );
         });
