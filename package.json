@@ -26,5 +26,8 @@
     "monocoque",
     "chassis",
     "wp-cli"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
 }
