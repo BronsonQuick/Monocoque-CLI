@@ -66,6 +66,8 @@ module.exports = async function createDockerCompose( answers, configSettings ){
 
         console.log( colors.success( 'Your configuration files have been copied into: ' + projectPath ) );
 
+        process.chdir(projectPath);
+
         await up();
         await wordpress();
 
